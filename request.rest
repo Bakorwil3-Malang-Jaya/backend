@@ -1,15 +1,16 @@
 GET http://localhost:4000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjQsIm5hbWUiOiJCaWdCb3NCYWtvcndpbCIsImVtYWlsIjoiYmlnYm9zYmFrb3J3aWxAZ21haWwuY29tIiwiaWF0IjoxNjkwMzU5MDk2LCJleHAiOjE2OTAzNTkxMTZ9.L5dBD1XKyNgOmCsvTibYvk9qGQxPY1WNC0xHcCp-jOs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjIsIm5hbWUiOiJiYWtvcndpbCIsImVtYWlsIjoiYmFrb3J3aWxAcm9ja2V0bWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY5NzM0MzI1NCwiZXhwIjoxNjk3MzQzMjc0fQ.SgrAN5NEai9UqhiRUW150E-q7oBdmUSP5_H-DOlxOe0
 
 ###
 POST http://localhost:4000/users
 Content-Type: application/json
 
 {
-    "name": "sudew",
-    "email": "sudew@gmail.com",
-    "password" : "12345",
-    "confirmPassword": "12345"
+    "name": "bakorwil",
+    "email": "bakorwil@rocketmail.com",
+    "role" : "bakorwil",
+    "password" : "bakorwil",
+    "confirmPassword": "bakorwil"
 }
 
 ###
@@ -17,8 +18,8 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "email": "sudew@gmail.com",
-    "password": "12345"
+    "name": "bakorwil",
+    "password": "bakorwil"
 }
 
 ###

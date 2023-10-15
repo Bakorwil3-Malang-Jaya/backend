@@ -7,7 +7,7 @@ import { refreshToken } from "./refreshToken.js";
 export const getUsers = async (req, res) => {
   try {
     const users = await usersModel.findAll({
-      attributes: ["id", "name", "email"],
+      attributes: ["id", "name", "email", "role",],
     });
     res.json(users);
   } catch (error) {
@@ -19,7 +19,7 @@ export const getUsers = async (req, res) => {
 
 // CONTROLLER CREATE USERS
 export const createUsers = async (req, res) => {
-  const { name, email, password, confirmPassword } = req.body;
+  const { name, email, password, role, confirmPassword } = req.body;
   if (password !== confirmPassword)
     return res.status(400).json({
       message: `password and confirm password doesn't match`,
@@ -30,6 +30,7 @@ export const createUsers = async (req, res) => {
     await usersModel.create({
       name: name,
       email: email,
+      role: role,
       password: hashPassword,
     });
     res.json({
@@ -47,7 +48,7 @@ export const loginUsers = async (req, res) => {
   try {
     const user = await usersModel.findAll({
       where: {
-        email: req.body.email,
+        name: req.body.name,
       },
     });
     const match = await bcrypt.compare(req.body.password, user[0].password);
@@ -55,14 +56,15 @@ export const loginUsers = async (req, res) => {
     const userid = user[0].id;
     const name = user[0].name;
     const email = user[0].email;
+    const role = user[0].role;
 
     const accessToken = jwt.sign(
-      { userid, name, email },
+      { userid, name, email, role },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "20s" }
     );
     const refreshToken = jwt.sign(
-      { userid, name, email },
+      { userid, name, email, role },
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: "1d" }
     );
