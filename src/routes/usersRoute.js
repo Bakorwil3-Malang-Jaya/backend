@@ -4,6 +4,7 @@ import {
   createUsers,
   loginUsers,
   logoutUsers,
+  deleteUsers,
 } from "../controller/authentication/usersController.js";
 import { verifyToken } from "../middleware/verifyToken.js";
 import { refreshToken } from "../controller/authentication/refreshToken.js";
@@ -20,5 +21,7 @@ router.post("/login", loginUsers);
 router.get("/token", refreshToken);
 // ROUTE LOGOUT
 router.delete("/logout", logoutUsers);
+// ROUTE LOGOUT
+router.delete("/users/:id", deleteUsers);
 
 export default router;

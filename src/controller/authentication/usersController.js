@@ -1,13 +1,12 @@
 import usersModel from "../../models/usersModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { refreshToken } from "./refreshToken.js";
 
 // CONTROLLER GET ALL USERS
 export const getUsers = async (req, res) => {
   try {
     const users = await usersModel.findAll({
-      attributes: ["id", "name", "email", "role",],
+      attributes: ["id", "name", "email", "role"],
     });
     res.json(users);
   } catch (error) {
@@ -109,4 +108,29 @@ export const logoutUsers = async (req, res) => {
   );
   res.clearCookie("refreshToken");
   return res.sendStatus(200);
+};
+
+// CONTROLLER DELETE USERS
+export const deleteUsers = async (req, res) => {
+  const users = await usersModel.findOne({
+    where: {
+      id: req.params.id,
+    },
+  });
+
+  if (!users) return res.status(404).json({ msg: "No User Found" });
+
+  try {
+    await usersModel.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json({ msg: "User Deleted Success" });
+  } catch (error) {
+    res.json({
+      msg: "User Deleted Failed",
+      Error: error,
+    });
+  }
 };
