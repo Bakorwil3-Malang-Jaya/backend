@@ -1,10 +1,20 @@
-import suratModel from "../models/suratModel.js";
-import path from "path";
-import fs from "fs";
-import { response } from "express";
+const suratModel = require("../models/suratModel.js");
+const path = require("path");
+const fs = require("fs");
+const { response } = require("express");
 
 // CONTROLLER GET ALL SURAT
-export const getSurat = async (req, res) => {
+const get = async (req, res) => {
+  try {
+    const response = "HEYYY JUDE BELLINGHAM";
+    res.json(response);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+// CONTROLLER GET ALL SURAT
+const getSurat = async (req, res) => {
   try {
     const response = await suratModel.findAll();
     res.json(response);
@@ -14,7 +24,7 @@ export const getSurat = async (req, res) => {
 };
 
 // CONTROLLER GET ALL SURAT
-export const getCountSurat = async (req, res) => {
+const getCountSurat = async (req, res) => {
   try {
     const response = await suratModel.findAndCountAll();
     const total = response.count;
@@ -25,7 +35,7 @@ export const getCountSurat = async (req, res) => {
 };
 
 // CONTROLLER GET SURAT BY ID
-export const getSuratById = async (req, res) => {
+const getSuratById = async (req, res) => {
   try {
     const response = await suratModel.findOne({
       where: {
@@ -39,7 +49,7 @@ export const getSuratById = async (req, res) => {
 };
 
 // CONTROLLER CREATE SURAT
-export const createSurat = (req, res) => {
+const createSurat = (req, res) => {
   // check if request file nothing
   if (req.files === null)
     return res.status(400).json({ message: "no file uploaded" });
@@ -61,7 +71,7 @@ export const createSurat = (req, res) => {
   // filename and url
   const ext = path.extname(fileSurat.name);
   // const timestamp = new Date().getTime();
-  const fileName = fileSurat.name ;
+  const fileName = fileSurat.name;
   const url = `${req.protocol}://${process.env.DOMAIN}/SuratMasuk/${fileName}`;
 
   // allowed type extension image
@@ -103,7 +113,7 @@ export const createSurat = (req, res) => {
 };
 
 // CONTROLLER UPDATE SURAT
-export const updateSurat = async (req, res) => {
+const updateSurat = async (req, res) => {
   // cek if there is data by id
   const suratMasuk = await suratModel.findOne({
     where: {
@@ -124,7 +134,7 @@ export const updateSurat = async (req, res) => {
   } else {
     // if update file
     const fileSurat = req.files.fileSurat;
-    const ext = path.extname(fileSurat.name); 
+    const ext = path.extname(fileSurat.name);
     // const timestamp = new Date().getTime();
     fileName = fileSurat;
     // allowed type extension image
@@ -191,7 +201,7 @@ export const updateSurat = async (req, res) => {
 };
 
 // CONTROLLER DELETE SURAT
-export const deleteSurat = async (req, res) => {
+const deleteSurat = async (req, res) => {
   const suratMasuk = await suratModel.findOne({
     where: {
       id: req.params.id,
@@ -219,4 +229,14 @@ export const deleteSurat = async (req, res) => {
       Error: error,
     });
   }
+};
+
+module.exports = {
+  get,
+  getSurat,
+  getCountSurat,
+  getSuratById,
+  createSurat,
+  updateSurat,
+  deleteSurat,
 };

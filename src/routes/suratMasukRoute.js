@@ -1,15 +1,18 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   getSurat,
   getCountSurat,
   getSuratById,
   createSurat,
   updateSurat,
   deleteSurat,
-} from "../controller/suratMasukController.js";
+  get,
+} = require("../controller/suratMasukController.js");
 
 const router = express.Router();
 
+// ROUTE GET
+router.get("/", get);
 // ROUTE GET ALL SURAT
 router.get("/surat", getSurat);
 // ROUTE GET COUNT SURAT
@@ -23,4 +26,4 @@ router.patch("/surat/:id", updateSurat);
 // ROUTE DELETE SURAT
 router.delete("/surat/:id", deleteSurat);
 
-export default router;
+module.exports = router;

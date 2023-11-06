@@ -1,16 +1,16 @@
 GET http://localhost:4000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjIsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5Acm9ja2V0bWFpbC5jb20iLCJpYXQiOjE2OTc2ODM3NDcsImV4cCI6MTY5NzY4Mzc2Mn0.SrnkrVLmgPeNfdsWejJtQUR72qid1ZilQXYwRyDmA8U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjE4LCJuYW1lIjoicGVtZXJpbnRhaGFuIiwiZW1haWwiOiJwZW1lcmludGFoYW5Acm9ja2V0bWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY5ODc1NTU2NCwiZXhwIjoxNjk4NzU1NTg0fQ.paWDj9xHjZBNV1kQ_Rx_ZsxhC3h5w2sk26_OTMCdRHE
 
 ###
 POST http://localhost:4000/users
 Content-Type: application/json
 
 {
-    "name": "Jember",
-    "email": "Jember@rocketmail.com",
-    "role" : "user",
-    "password" : "Jember",
-    "confirmPassword": "Jember"
+    "name": "pemerintahan",
+    "email": "pemerintahan@rocketmail.com",
+    "role" : "pemerintahan",
+    "password" : "pemerintahan",
+    "confirmPassword": "pemerintahan"
 }
 
 ###
@@ -18,8 +18,8 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "name": "admin",
-    "password": "admin"
+    "name": "pemerintahan",
+    "password": "pemerintahan"
 }
 
 ###

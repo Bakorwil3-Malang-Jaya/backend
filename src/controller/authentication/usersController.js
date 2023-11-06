@@ -1,9 +1,9 @@
-import usersModel from "../../models/usersModel.js";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+const usersModel = require("../../models/usersModel.js");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // CONTROLLER GET ALL USERS
-export const getUsers = async (req, res) => {
+const getUsers = async (req, res) => {
   try {
     const users = await usersModel.findAll({
       attributes: ["id", "name", "email", "role"],
@@ -17,7 +17,7 @@ export const getUsers = async (req, res) => {
 };
 
 // CONTROLLER CREATE USERS
-export const createUsers = async (req, res) => {
+const createUsers = async (req, res) => {
   const { name, email, password, role, confirmPassword } = req.body;
   if (password !== confirmPassword)
     return res.status(400).json({
@@ -43,7 +43,7 @@ export const createUsers = async (req, res) => {
 };
 
 // CONTROLLER LOGIN USERS
-export const loginUsers = async (req, res) => {
+const loginUsers = async (req, res) => {
   try {
     const user = await usersModel.findAll({
       where: {
@@ -88,7 +88,7 @@ export const loginUsers = async (req, res) => {
 };
 
 // CONTROLLER LOGOUT USERS
-export const logoutUsers = async (req, res) => {
+const logoutUsers = async (req, res) => {
   const refreshToken = req.cookies.refreshToken;
   if (!refreshToken) return res.sendStatus(204);
   const user = await usersModel.findAll({
@@ -111,7 +111,7 @@ export const logoutUsers = async (req, res) => {
 };
 
 // CONTROLLER DELETE USERS
-export const deleteUsers = async (req, res) => {
+const deleteUsers = async (req, res) => {
   const users = await usersModel.findOne({
     where: {
       id: req.params.id,
@@ -133,4 +133,12 @@ export const deleteUsers = async (req, res) => {
       Error: error,
     });
   }
+};
+
+module.exports = {
+  getUsers,
+  createUsers,
+  loginUsers,
+  logoutUsers,
+  deleteUsers,
 };
