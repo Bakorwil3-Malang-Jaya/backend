@@ -8,7 +8,7 @@ const requestModel = db.define(
   {
     bidang: DataTypes.STRING,
     perihal: DataTypes.STRING,
-    tanggal: DataTypes.DATE,
+    tanggal: DataTypes.DATEONLY,
     nomor_surat: DataTypes.STRING,
   },
   {

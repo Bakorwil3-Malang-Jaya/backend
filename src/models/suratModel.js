@@ -7,8 +7,8 @@ const suratModel = db.define(
   "surat",
   {
     nomor_agenda: DataTypes.INTEGER,
-    tgl_diterima: DataTypes.DATE,
-    tgl_surat: DataTypes.DATE,
+    tgl_diterima: DataTypes.DATEONLY,
+    tgl_surat: DataTypes.DATEONLY,
     nomor_surat: DataTypes.STRING,
     pengirim: DataTypes.STRING,
     perihal: DataTypes.STRING,
