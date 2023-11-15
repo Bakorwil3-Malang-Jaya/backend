@@ -6,11 +6,11 @@ POST http://localhost:4000/users
 Content-Type: application/json
 
 {
-    "name": "pemerintahan",
-    "email": "pemerintahan@rocketmail.com",
-    "role" : "pemerintahan",
-    "password" : "pemerintahan",
-    "confirmPassword": "pemerintahan"
+    "name": "admin",
+    "email": "admin@rocketmail.com",
+    "role" : "admin",
+    "password" : "admin",
+    "confirmPassword": "admin"
 }
 
 ###
