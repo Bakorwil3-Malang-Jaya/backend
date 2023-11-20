@@ -6,7 +6,7 @@ const { DataTypes } = Sequelize;
 const suratModel = db.define(
   "surat",
   {
-    nomor_agenda: DataTypes.INTEGER,
+    nomor_agenda: DataTypes.STRING,
     tgl_diterima: DataTypes.DATEONLY,
     tgl_surat: DataTypes.DATEONLY,
     nomor_surat: DataTypes.STRING,

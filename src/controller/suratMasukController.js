@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const { response } = require("express");
 
-// CONTROLLER GET ALL SURAT
+// CONTROLLER ENTRY
 const get = async (req, res) => {
   try {
     const response = "HEYYY JUDE BELLINGHAM";
@@ -72,7 +72,7 @@ const createSurat = (req, res) => {
   const ext = path.extname(fileSurat.name);
   // const timestamp = new Date().getTime();
   const fileName = fileSurat.name;
-  const url = `${req.protocol}://${process.env.DOMAIN}/SuratMasuk/${fileName}`;
+  const url = `${req.protocol}://${process.env.DOMAIN}:4000/SuratMasuk/${fileName}`;
 
   // allowed type extension image
   const allowedType = [".docx", ".pdf"];
@@ -85,8 +85,8 @@ const createSurat = (req, res) => {
   fileSurat.mv(`./public/SuratMasuk/${fileName}`, async (err) => {
     // check if there is an error
     if (err) return res.status(500).json({ message: err.message });
+    // if there are no errors save data to database
     try {
-      // if there are no errors save data to database
       await suratModel.create({
         nomor_agenda: nomor_agenda,
         tgl_diterima: tgl_diterima,
@@ -165,7 +165,7 @@ const updateSurat = async (req, res) => {
   const sifat = req.body.sifat;
   const keterangan = req.body.keterangan;
   const tahun = req.body.tahun;
-  const url = `${req.protocol}://${process.env.DOMAIN}/SuratMasuk/${fileName}`;
+  const url = `${req.protocol}://${process.env.DOMAIN}:4000/SuratMasuk/${fileName}`;
 
   // save update to database
   try {

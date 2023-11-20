@@ -11,16 +11,16 @@ const {
 const router = express.Router();
 
 // ROUTE GET ALL request
-router.get("/request", getRequest);
+router.get("/requestt", getRequest);
 // ROUTE GET COUNT request
-router.get("/requestcount", getCountRequest);
+router.get("/requestcountt", getCountRequest);
 // ROUTE GET request BY ID
-router.get("/request/:id", getRequestById);
+router.get("/requestt/:id", getRequestById);
 // ROUTE CREATE request
-router.post("/request", createRequest);
+router.post("/requestt", createRequest);
 // ROUTE EDIT request
-router.patch("/request/:id", updateRequest);
+router.patch("/requestt/:id", updateRequest);
 // ROUTE DELETE request
-router.delete("/request/:id", deleteRequest);
+router.delete("/requestt/:id", deleteRequest);
 
 module.exports = router;

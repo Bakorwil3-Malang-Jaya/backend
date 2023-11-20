@@ -7,9 +7,10 @@ const requestModel = db.define(
   "request",
   {
     bidang: DataTypes.STRING,
-    perihal: DataTypes.STRING,
     tanggal: DataTypes.DATEONLY,
     nomor_surat: DataTypes.STRING,
+    img: DataTypes.STRING,
+    url: DataTypes.STRING,
   },
   {
     freezeTableName: true,
